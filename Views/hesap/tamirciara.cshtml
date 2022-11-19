@@ -1,0 +1,409 @@
+﻿@{
+    var cookie = Request.Cookies["Kullancibilgi"];
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="~/Content/css/stylev.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>TamirciSepeti</title>
+
+
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <div class="hcontainer">
+                <div class="rows">
+                    <div class="logo">
+                        <a href="~/" style="text-decoration:none">
+                            <p class="tmr">Tamircisepeti </p>
+                        </a>
+                    </div>
+                    <div id="adreskutu" class="col-md-4">
+                        <div class="select">
+                            <select name="Adres" id="adres" class="adres">
+                                <option value="acıpayam">Acıpayam</option>
+                                <option value="merkezefendi">Merkezefendi</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-7" id="aramakutusu">
+                        <input class="form-control searchbox" placeholder="Tamirci arayın..." type="text" tabindex="1" autocomplete="off" />
+                    </div>
+                    <div class="col-md-1 " id="ara">
+                        <button type="button" tabindex="2" aria-label="ARA" class=" searcbutton">
+                            <span class="araimg"> <img src="~/content/img/sadsa.png" /> </span>
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+    <div class="highlight">
+        <div class="parallax">
+
+            <img src="~/Content/img/Gamification.jpg" alt="Profilim" style="top:-40px;" />
+        </div>
+        <div class="tcontainer">
+            <div class="rows">
+                <div class="col-16-33">
+                    <h2>Profil Bilgilerim</h2>
+                    <div class="breadcrumb" itemprop="breadcrumb" style="display:block;">
+                        <a href="~/">Tamirci sepeti</a>
+                        <i class="ys-icons ys-icons-smallRightArrow breadcrumb-arrow"></i>
+                        <span>@cookie["kelime"] ile ilgili sonuçlar </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="containermain" style="height:1718.72px">
+        <div class="rows" style="height:1698.72px;">
+            <div class="leftys" style="height:550px;">
+                <div id="basketcontainer" class="affixare">
+                    <div class="usercontents" id="usercontent" style="width:240px;height:56px">
+                        <div class="ys-userInfo" id="user-info">
+                            <div class="ys-pullLeft">
+                                <div class="">
+                                    <img class="ys-profile-picture" id="ysUserPicture" alt="." src="~/Content/img/pp.png">
+                                </div>
+
+                            </div>
+                            <div class="ys-pullRight">
+                                <div class="ys-user-info-container withPoint">
+
+                                    <div>
+                                        <b id="ysUsername">@cookie["isim"] @cookie["soyisim"]</b>
+
+
+                                    </div>
+                                    <div style="font-size: 11px; color: #333; ">
+                                        6,795 Toplam Puan
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="ys-userDetails" style="display:none;">
+                            <div class="ys-userSettings">
+                                <ul>
+                                    <li> <a id="goToMyProFile" href="/hesap/profilim">Profilim</a></li>
+                                    <li> <a href="/hesap/siparişlerim">Siparişlerim</a></li>
+                                    <li> <a href="/hesap/favorilerim">Favorilerim</a></li>
+                                    <li><a href="/hesap/adreslerim"> Adreslerim</a></li>
+                                    <li><a href="/hesap/bilgilerim">Bilgilerim</a></li>
+                                </ul>
+                            </div>
+                            <div class="ys-userActions">
+                                <a class="btnUserLogout" href="~/Security/logout">ÇIKIŞ YAP</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ys-basket">
+                        <div class="header">
+                            <span>TAMİRCİ SİPARİŞİM</span>
+                        </div>
+                        <div class="itemlist">
+                            <table>
+                                <tbody class="items"> </tbody>
+                            </table>
+                        </div>
+                        <div class="noitem" id="item">
+                            <i id="var1" class="ys-icons ys-icons-Standard-icons-empty-basket-icon"></i>
+                            <span id="var2">Sepetiniz henüz boş.</span>
+                        </div>
+                        <div class="actions" id="act" style="visibility:hidden">
+                            <button id="siparisbtn" class="ys-btn ys-btn-block ys-btn-primary confirm-basket">
+                                SEPETİ ONAYLA
+                            </button>
+                            <button id="silbtn" class="ys-btn ys-btn-block ys-btn-primary confirm-basket" style="background:red!important;">
+                                SEPETİ SİL
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="ysright" style="width: 75%; height:1698.72px;">
+                <div class="col-md-122 ys-rightColumn" style="height:60%">
+                    <div class="ys-reslist-items" style="height:50%;position:relative;">
+                        <div class="ys-reslist-items" id="eklencek" style="height:100%">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <footer class="ysfooter">
+        <div class="ftop">
+            <div style="height:100px;" class="fcontainer">
+                <div class="frow">
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> S.S.S. ve İşlem Rehberi</a></li>
+                            <li><a href="/"> Kullanıcı Sözleşmesi</a></li>
+                            <li><a href="/"> Aydınlatma Metni</a></li>
+                            <li><a href="/"> Bilgi Toplumu Hizmetleri</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> İletişim</a></li>
+                            <li><a href="/"> Fırsatlar</a></li>
+                            <li><a href="/cantahome/home" target="_blank"> Dükkan Portal</a></li>
+                            <li><a href="/"> Dükkan Öner</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi sehirdegistir cold-md-offset-4">
+                        <a href="/" class="ys-btn ys-btn-sehirdegistir" style="height:32px;">
+                            20
+                            <span class="sehirdegistirspan">ŞEHİR DEĞİŞTİR</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fmid">
+            <div class="fmidcontainer"></div>
+            <div class="fmidbottom"> </div>
+        </div>
+    </footer>
+    <script>
+        var ilkfiyat = true;
+        var bitirisini = true;
+        $(document).ready(() => {
+            $('#silbtn').on('click', () => {
+                if ($('#item').height != 65) {
+                    $.sepetsil();
+                    bitirisini = true;
+
+                    $("#silseri").remove();
+                }
+
+
+            });
+
+
+            $('#usercontent').on('click', () => {
+
+                if ($('#usercontent').hasClass('active')) {
+                    $('#usercontent').removeClass('active')
+
+                    //$('#usercontent').css('height', '56px')
+                    $('#usercontent').animate({
+                        height: '56px',
+
+                    }, 500)
+
+                    $('.ys-userDetails').animate({
+                        height: '56px',
+
+                    }, 500)
+
+                    setTimeout(function () { $('.ys-userDetails').css('display', 'none'); }, 400);
+                    //alert("çalıştı kral")
+
+                }
+                else {
+                    //alert("çalıştıyor");
+                    $('#usercontent').addClass('active')
+
+                    $('#usercontent').animate({
+                        height: '272px',
+
+                    }, 500)
+
+                    $('.ys-userDetails').animate({
+                        height: '177px',
+
+                    }, 500)
+                    setTimeout(function () { $('.ys-userDetails').css('display', 'block'); }, 200);
+                }
+
+            });
+
+
+
+        });
+        $(document).scroll(function () {
+            var y = $(document).scrollTop(),
+                leftys = $(".affixare");
+            if (y >= 100) {
+                leftys.addClass("affix");
+
+            }
+            else {
+                leftys.removeClass("affix");
+
+            }
+        })
+
+        $(document).ready(function () {
+
+            $("#siparisbtn").click(function () {
+                $.siparisver();
+            });
+
+
+        });
+        $(function () {
+            //aynı ajaxmı kullanıcağımdan dolayı ajaxsetup oluştuyorum
+            $.ajaxSetup({
+                type: "post",
+                url: "/hesap/tamircigetir",//controlerımda gidicek olan yerim
+                dataType: "json"
+            });
+            $.extend({
+
+                tamirciGetir: function () {
+                    $.ajax({
+                        data: { "tip": "tamircigetirara" },
+                        success: function (sonuc) {
+                            //gelen sonucumuz kontrol ediyoruz ona göre selectimze append işlemi gerçekleştiyoruz
+                            if (sonuc.ok) {
+
+                                $.each(sonuc.text, function (index, item) {
+                                    var text1 = '<div class="ys-item">' + '<a id="degeral" onclick="pop(this)" data-message="' + item.Value + '" > ' + item.Text + '</a> ' + ' </div > ';
+                                    $("#eklencek").append(text1);
+                                });
+
+                            }
+                            else {
+                                $.each(sonuc.text, function (index, item) {
+                                    var text1 = '<div class="ys-item">' + '<a id="degeral" href="javascript:deactive_tiptip();" onclick="make(event) >' + item.Text + '</a>' + ' </div>';
+                                    $("#eklencek").append(optionhtml);
+
+                                });
+
+                            }
+
+
+                            ;
+                        }
+                    });
+                },
+                sepetsil: function () {
+                    $.ajax({
+
+                        data: { "tip": "sepetsil" },
+                        success: function (sonuc) {
+
+                            location.reload(this);
+
+
+                        }
+
+
+                    });
+                }, siparisver: function () {
+                    $.ajax({
+                        data: { "tip": "siparisver" },
+                        success: function (sonuc) {
+                            if (sonuc.ok) {
+                                alert("Siparişiniz alınmıştır");
+
+                                window.location.href = '/';
+                            }
+                            else {
+                                alert("Lütfen daha önce verdiğiniz siparişi bekleyiniz");
+                            }
+
+                        }
+                    });
+                },
+                sepetkontrol: function () {
+                    var say = -20;
+                    $.ajax({
+
+                        data: { "tip": "sepetcontrol" },
+                        success: function (sonuc) {
+
+                            if (ilkfiyat && bitirisini && sonuc.ok) {
+                                var text1 = '<span id="silseri" style="  display:flex; flex-direction: column; margin-bottom:10px;" >' + "hizmet adi" + '&emsp;&emsp;&emsp;&emsp;&emsp;' + "hizmet fiyati" + '</span>'
+                                $("#item").append(text1);
+                                bitirisini = false;
+                            }
+
+
+                            if (sonuc.ok) {
+
+
+                                $("#var1").remove();
+                                $("#var2").remove();
+                                $.each(sonuc.text, function (index, item) {
+                                    var text1 = '<span style="  display:flex; flex-direction: column; margin-bottom:10px;" >' + item.Text + '&emsp;&emsp;&emsp;&emsp;&emsp;' + item.Value + '</span>'
+                                    $("#item").append(text1);
+                                    say += 25;
+                                });
+                                $("#item").css({ height: (say + 85) + 'px' });
+                                $("#act").css({ visibility: "visible" });
+                            }
+
+
+                        }
+
+
+                    });
+                },
+                tamirciGötür: function (ID) {
+                    $.ajax({
+                        data: { "ID": ID, "tip": "tamircigötür" },
+                        success: function (ok) {
+                            //gelen sonucumuz kontrol ediyoruz ona göre selectimze append işlemi gerçekleştiyoruz
+                            window.location.href = "/hesap/hizmetgör";
+
+
+                        }
+                    });
+                }
+
+            });
+            //ilgetirimizi çalıştıyoruz
+            $.tamirciGetir();
+            $.sepetkontrol();
+
+        });
+
+        function pop(e) {
+            var id = e.getAttribute("data-message");
+            $.tamirciGötür(id);
+
+        }
+    </script>
+
+</body>
+</html>

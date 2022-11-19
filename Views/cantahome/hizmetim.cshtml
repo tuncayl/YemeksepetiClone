@@ -1,0 +1,205 @@
+﻿@{
+    Layout = null;
+    var cookie = Request.Cookies["saticibilgi"];
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!--  Meta  -->
+    <meta charset="UTF-8" />
+    <title>Tamirci sepeti</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="~/Content/css/stylev.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/css/sty1.css" rel="stylesheet" />
+    <!--  Styles  -->
+    <link rel="stylesheet" href="~/Content/css/sty.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="selfregistration-body" style=" background: #2d2d7f !important;height:900px!important;">
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg main-nav px-0">
+                <a class="navbar-brand" href="/cantahome/home">
+                    <img src="http://rajeshdas.com/assets/images/logo.svg" alt="rajeshdas.com">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar icon-bar-1"></span>
+                    <span class="icon-bar icon-bar-2"></span>
+                    <span class="icon-bar icon-bar-3"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainMenu">
+                    <ul class="navbar-nav ml-auto text-uppercase f1">
+                        <li>
+                            <a href="/cantahome/home">Anasayfa</a>
+                        </li>
+                        <li>
+                            <a href="/cantahome/siparis">Sipariş Takibi</a>
+                        </li>
+                        <li>
+                            <a href="/cantahome/hizmetim" class="active active-first">hizmetim</a>
+                        </li>
+                        
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- /.container -->
+    </header>
+    <div class="kacontainer" style="height:900px!important">
+        <div class="formaltı">
+            <div class="well well-default mt-48 well-responsive px-md-25" id="ekle">
+                
+                <h4 class="mb-20 mt-40 fw-700" style="width:500px; margin-right:0!important; ">Hizmetlerim </h4><a class="yeniadres2" style=" float: left;" href="javascript:void(0);" id="myBtn">yeni hizmet ekle</a>
+                <div class="row-my-10"  style="margin-top: 54px !important;">
+                    <h4 class="mb-20 mt-40 fw-700" style="float:left;margin-left:30px;">Hizmet adı </h4> <h4 class="mb-20 mt-40 fw-700" style="float: left; margin-left: 280px; margin-bottom: 81px !important; ">hizmet fiyati </h4>
+                    <div id="myModal" class="modal">
+                        <div class="modal-content" style="background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 50%; height: 50%;">
+                            <span class="close">&times;</span>
+                            <form>
+                                <div class="row-my-10">
+                                    <div class="col-md-44">
+                                        <div class="form-group apply-pr">
+                                            hizmet adi   <input type="text" name="hizmetadi" id="hizmetadi" />
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-44">
+                                        <div class="form-group apply-pr">
+
+                                            hizmet fiyati  <input type="number" name="hizmetfiyati" id="hizmetfiyati" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-44">
+                                        <div class="form-group apply-pr">
+
+                                            <input id="Submit1" type="button" value="Ekle" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Scripts -->
+    <script src="scripts/index.js"></script>
+    <script>
+        var modal = document.getElementById('myModal');
+        // Kipi açan düğmeyi al
+        var btn = document.getElementById("myBtn");
+        // Kipi kapatan <span> öğesini edinin
+        var span = document.getElementsByClassName("close")[0];
+        // Kullanıcı düğmeyi tıklattığında
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        // Kullanıcı <span> (x) düğmesini tıkladığında, popup
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        // Kullanıcı modelden başka herhangi bir yeri tıklattıysa, onu kapatın.
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        $(document).ready(function () {
+            $("#Submit1").click(function () {
+                
+//--------- JSON Verisini Bu Arada Oluşturdum--------------------
+                var hizmetim = {
+                    hizmetadi: $("#hizmetadi").val(),
+                    hizmetfiyati: $("#hizmetfiyati").val()
+               
+                }
+             
+//--------- JSON Verisini Bu Arada Oluşturdum--------------------
+
+            $.ajax({
+                url: "/cantahome/hizmetimjs2",
+                type: 'POST',
+                dataType: 'json',
+                data: hizmetim,
+                success: function (data) {
+                    window.location.reload();
+                    alert(data);
+                   
+                }
+            });
+        });
+        });
+
+
+
+
+
+
+        $(function () {
+            //aynı ajaxmı kullanıcağımdan dolayı ajaxsetup oluştuyorum
+            $.ajaxSetup({
+                type: "post",
+                url: "/cantahome/hizmetimjs",//controlerımda gidicek olan yerim
+                dataType: "json"
+            });
+            $.extend({
+                ilGetir: function () {
+                    $.ajax({
+                        data: { "bos": 12 },
+                        success: function (sonuc) {
+                            //gelen sonucumuz kontrol ediyoruz ona göre selectimze append işlemi gerçekleştiyoruz
+                            if (sonuc.ok) {
+
+                                $.each(sonuc.text, function (index, item) {
+                                    var text1 = '<h4 class="mb-20 mt-40 fw-700">' + item.Text + '</h4>';
+                                    var text2 = '<h4 class="mb-20 mt-40 fw-700">' + item.Value + '</h4>';
+                                    var row = '<div class="row-my - 10" id="row"> </div>';
+                                    var col = '<div class="col-md-44" id="col" > </div>';
+                                    var col1 = '<div class="col-md-44" id="col1" style="padding-left:155px;" > </div>';
+                                    var colin = '<div class="form-group apply-pr" id="colin"> </div>';
+                                    $("#ekle").append(row);
+                                    $("#row").append(col);
+                                    $("#row").append(col1)
+                                    $("#col").append(text1);
+                                    $("#col1").append(text2);
+                                });
+
+                            }
+                            else {
+                                $.each(sonuc.text, function (index, item) {
+                                    var optionhtml = '<h4 class="mb-20 mt-40 fw-700">"' + item.Text + '</h4>';
+                                    $("#ekle").append(optionhtml);
+
+                                });
+
+                            }
+                        }
+                    });
+                },
+
+            });
+            //ilgetirimizi çalıştıyoruz
+            $.ilGetir();
+
+
+        });
+    </script>
+</body>
+
+</html>

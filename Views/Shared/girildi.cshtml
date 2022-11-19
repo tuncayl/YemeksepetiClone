@@ -1,0 +1,697 @@
+﻿@{ 
+    var cookie = Request.Cookies["Kullancibilgi"];
+} 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="~/Content/css/stylev.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/css/sty1.css" rel="stylesheet" />
+    <title>@ViewBag.title</title>
+
+
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <div class="hcontainer">
+                <div class="rows">
+                    <div class="logo">
+                        <a href="~/" style="text-decoration:none">
+                            <p class="tmr">Tamircisepeti </p>
+                        </a>
+                    </div>
+                    <div id="adreskutu" class="col-md-4">
+                        <div class="select">
+                            <select name="Adres" id="ililce" class="adres">
+                                <option value="0" class="sil">
+                                    mahalle seçimi
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-7" id="aramakutusu">
+                        <input id="arakel" class="form-control searchbox" placeholder="Tamirci arayın..." type="text" tabindex="1" autocomplete="off" />
+                    </div>
+                    <div class="col-md-111">
+                        <button id="arabuton" type="button" tabindex="2" aria-label="ARA" class=" searcbutton">
+                            <span class="araimg"> <img src="~/content/img/sadsa.png" /> </span>
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+
+    <div class="containermain">
+        <div class="mainyss">
+         
+            <div class="leftys">
+                <div id="basketcontainer" class="affixare">
+                    <div class="usercontents" id="usercontent" style="width:240px;height:56px">
+                        <div class="ys-userInfo" id="user-info">
+                            <div class="ys-pullLeft">
+                                <div class="">
+                                    <img class="ys-profile-picture" id="ysUserPicture" alt="." src="~/Content/img/pp.png">
+                                </div>
+
+                            </div>
+                            <div class="ys-pullRight">
+                                <div class="ys-user-info-container withPoint">
+
+                                    <div>
+                                        <b id="ysUsername">@cookie["isim"] @cookie["soyisim"]</b>
+
+
+                                    </div>
+                                    <div style="font-size: 11px; color: #333; ">
+                                        6,795 Toplam Puan
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="ys-userDetails" style="display:none;">
+                            <div class="ys-userSettings">
+                                <ul>
+                                    <li> <a id="goToMyProFile" href="/hesap/profilim">Profilim</a></li>
+                                    <li> <a href="/hesap/siparişlerim">Siparişlerim</a></li>
+                                    <li> <a href="/hesap/favorilerim">Favorilerim</a></li>
+                                    <li><a href="/hesap/adreslerim"> Adreslerim</a></li>
+                                    <li><a href="/hesap/bilgilerim">Bilgilerim</a></li>
+                                </ul>
+                            </div>
+                            <div class="ys-userActions">
+                                <a class="btnUserLogout" href="Security/logout">ÇIKIŞ YAP</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ys-basket">
+                        <div class="header">
+                            <span>TAMİRCİ SİPARİŞİM</span>
+                        </div>
+                        <div class="itemlist">
+                            <table>
+                                <tbody class="items"> </tbody>
+                            </table>
+                        </div>
+                        <div class="noitem" id="item">
+                            <i id="var1" class="ys-icons ys-icons-Standard-icons-empty-basket-icon"></i>
+                            <span id="var2">Sepetiniz henüz boş.</span>
+                        </div>
+                        <div class="actions" id="act" style="visibility:hidden">
+                            <button id="siparisbtn" class="ys-btn ys-btn-block ys-btn-primary confirm-basket">
+                                SEPETİ ONAYLA
+                            </button>
+                            <button id="silbtn" class="ys-btn ys-btn-block ys-btn-primary confirm-basket" style="background:red!important;">
+                                SEPETİ SİL
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class=" ysright">
+                <div>
+                    <div class="rowsv1" style="width:756px;height:234px;">
+                        <div class="col-16-3" style="width:189px;height:234px;">
+                            <div class="ys-panel ys-SavedAddress" style="border-bottom: 35px solid #eff0f2;">
+                                <div class="tuno-heading">
+                                    <i class="ys-icons ys-icons-locate" style="float:left;"></i>
+                                    Kayıtlı Adreslerim
+
+
+                                </div>
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <i class="ys-icons set-current-area">
+                                                </i>
+                                                <a href="/hesap/siparisal" style="text-decoration: none;" id="adresekles">
+                                                    <span class="tunoadreslabel" title="Ev">EV</span>
+                                                    
+                                                </a>
+                                            </div>
+                                            
+                                        </li>
+                                    </ul>
+                                    <a class="yeniadres"  href="javascript:void(0);" id="myBtn">Yeni Adres Ekle</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div class="row-my-10">
+                                    <div class="col-md-44">
+                                        <div class="form-group apply-pr">
+                                            <select id="ilcelers" name="atown" class="rselect">
+                                                <option value="0">ilçe seçimi</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-44">
+                                        <div class="form-group apply-pr">
+
+                                            <select id="semtler" name="adistrict" class="rselect rdisabled" disabled="disabled">
+                                                <option value="0" class="rsil">Semt Seçimi</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-44">
+                                        <div class="form-group apply-pr">
+
+                                            <textarea name="adres" id="adres" style="resize:none;width:100%;height:100%">
+
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input id="Button1" type="button" value="Ekle" style="width:30%;" />
+                            </div>
+                        </div>
+                        <div class="col-16-9" style="width:567px;height:234px;">
+                            <div class="ys-panel ys-tabs ys-pnlUserBar" style="border-bottom: 35px solid #eff0f2; ">
+                                <div class="panel-heading with-tabs">
+                                    <ul class="nav nav-tabs" role="tablist" id="deneme" style="height: 39px;">
+                                        <li class="active">
+                                            <a href="javascript:void(0);">
+                                                <i class="ys-icons ys-icons-calendar"></i>
+                                                Siparişlerim
+
+                                            </a>
+                                        </li>
+                                        <li class=" " id="Favorilerim">
+                                            <a  data-content-id="Favorilerim" href="javascript:void(0);">
+                                                <i class="ys-icons ys-icons-star"></i>
+                                                Favorilerim
+
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="javascript:void(0);" style="height:39px">
+                                                <i class="ys-icons ys-icons-rest"></i>
+                                                yeni Tamirciler
+
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="javascript:void(0);" style="height:39px">
+                                                <i class="ys-icons ys-icons-Standard-filterIcons-super-delivery-active"></i>
+                                                Süper Tamirciler
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="panel-body" id="sptab">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer class="ysfooter">
+        <div class="ftop">
+            <div style="height:100px;" class="fcontainer">
+                <div class="frow">
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> S.S.S. ve İşlem Rehberi</a></li>
+                            <li><a href="/"> Kullanıcı Sözleşmesi</a></li>
+                            <li><a href="/"> Aydınlatma Metni</a></li>
+                            <li><a href="/"> Bilgi Toplumu Hizmetleri</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> İletişim</a></li>
+                            <li><a href="/"> Fırsatlar</a></li>
+                            <li><a href="/cantahome/home" target="_blank"> Dükkan Portal</a></li>
+                            <li><a href="/"> Dükkan Öner</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi sehirdegistir cold-md-offset-4">
+                        <a href="/" class="ys-btn ys-btn-sehirdegistir" style="height:32px;">
+                            20
+                            <span class="sehirdegistirspan">ŞEHİR DEĞİŞTİR</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fmid">
+            <div class="fmidcontainer"></div>
+            <div class="fmidbottom"> </div>
+        </div>
+    </footer>
+    <script>
+        
+
+
+        var ilkfiyat = true;
+        var bitirisini = true;
+       
+
+
+        var modal = document.getElementById('myModal');
+        // Kipi açan düğmeyi al
+        var btn = document.getElementById("myBtn");
+        // Kipi kapatan <span> öğesini edinin
+        var span = document.getElementsByClassName("close")[0];
+        // Kullanıcı düğmeyi tıklattığında
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        // Kullanıcı <span> (x) düğmesini tıkladığında, popup
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        // Kullanıcı modelden başka herhangi bir yeri tıklattıysa, onu kapatın.
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+
+        $(document).ready(() => {
+            $('#usercontent').on('click', () => {
+                if ($('#usercontent').hasClass('active'))
+                {
+                    $('#usercontent').removeClass('active')
+
+                    //$('#usercontent').css('height', '56px')
+                    $('#usercontent').animate({
+                        height: '56px',
+
+                    }, 500)
+
+                    $('.ys-userDetails').animate({
+                           height: '56px',
+
+                    }, 500)
+
+                    setTimeout(function () { $('.ys-userDetails').css('display', 'none'); }, 400);
+                    //alert("çalıştı kral")
+
+                }
+                else
+                {
+                    //alert("çalıştıyor");
+                    $('#usercontent').addClass('active')
+
+                    $('#usercontent').animate({
+                        height: '272px',
+
+                    }, 500)
+
+                    $('.ys-userDetails').animate({
+                        height: '177px',
+
+                    }, 500)
+                    setTimeout(function () { $('.ys-userDetails').css('display', 'block'); }, 200);
+                }
+
+            });
+            $("#deneme a").each(function () {
+                $(this).click(function () {
+                    var yazi = $(this).parent("li").attr("class");
+                    var yazi1 = $(this).parent("li");
+
+                    if (yazi != "active")
+                    {
+                        $(this).parent("li").parent("ul").find(".active").removeClass("active");
+                        yazi1.addClass("active");
+                    }
+                });
+            });
+
+        });
+
+        $(document).scroll(function () {
+            var y = $(document).scrollTop(),
+                leftys = $(".affixare");
+            if (y >= 1) {
+                leftys.addClass("affix");
+
+            }
+            else {
+                leftys.removeClass("affix");
+
+            }
+        })
+        $(document).ready(function () {
+
+            $("#siparisbtn").click(function () {
+                $.siparisver();
+            });
+            $('#silbtn').on('click', () => {
+                if ($('#item').height != 65) {
+                    $.sepetsil();
+                    bitirisini = true;
+
+                    $("#silseri").remove();
+                }
+
+
+            });
+
+            $(function () {
+                //aynı ajaxmı kullanıcağımdan dolayı ajaxsetup oluştuyorum
+                $.ajaxSetup({
+                    type: "post",
+                    url: "/home/ililce",//controlerımda gidicek olan yerim
+                    dataType: "json"
+                });
+                $.extend({
+                    ililceGetir: function () {
+                        $.ajax({
+                            //datamızı gönderiyoruz
+                            data: { "tip": "ililceGetir" },
+                            success: function (sonuc) {
+                                //gelen sonucumuz kontrol ediyoruz ona göre selectimze append işlemi gerçekleştiyoruz
+                                if (sonuc.ok) {
+
+                                    $.each(sonuc.text, function (index, item) {
+                                        var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                        $("#ililce").append(optionhtml);
+
+
+                                    });
+
+                                }
+                                else {
+                                    $.each(sonuc.text, function (index, item) {
+                                        var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                        $("#ililce").append(optionhtml);
+
+                                    });
+
+                                }
+                            }
+                        });
+                    },
+
+
+
+                });
+                //ilgetirimizi çalıştıyoruz
+                $.ililceGetir();
+
+            });
+            $(function () {
+                //aynı ajaxmı kullanıcağımdan dolayı ajaxsetup oluştuyorum
+                $.ajaxSetup({
+                    type: "post",
+                    url: "/Shared/adresgetirgötür",//controlerımda gidicek olan yerim
+                    dataType: "json"
+                });
+                $.extend({
+                    ilceGetir: function () {
+                        $.ajax({
+                            //datamızı gönderiyoruz
+                            data: { "tip": "ilceGetir" },
+                            success: function (sonuc) {
+                                //gelen sonucumuz kontrol ediyoruz ona göre selectimze append işlemi gerçekleştiyoruz
+                                if (sonuc.ok) {
+
+                                    $.each(sonuc.text, function (index, item) {
+                                        var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                        $("#ilcelers").append(optionhtml);
+
+
+                                    });
+
+                                }
+                                else {
+                                    $.each(sonuc.text, function (index, item) {
+                                        var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                        $("#ilcelers").append(optionhtml);
+
+                                    });
+
+                                }
+                            }
+                        });
+                    }, sepetsil: function () {
+                        $.ajax({
+
+                            data: { "tip": "sepetsil" },
+                            success: function (sonuc) {
+
+                                location.reload(this);
+
+
+                            }
+
+
+                        });
+                    }, sepetkontrol: function () {
+                        var say = -20;
+                        $.ajax({
+
+                            data: { "tip": "sepetcontrol" },
+                            success: function (sonuc) {
+
+                                if (ilkfiyat && bitirisini && sonuc.ok) {
+                                    var text1 = '<span id="silseri" style="  display:flex; flex-direction: column; margin-bottom:10px;" >' + "hizmet adi" + '&emsp;&emsp;&emsp;&emsp;&emsp;' + "hizmet fiyati" + '</span>'
+                                    $("#item").append(text1);
+                                    bitirisini = false;
+                                }
+
+
+                                if (sonuc.ok) {
+
+
+                                    $("#var1").remove();
+                                    $("#var2").remove();
+                                    $.each(sonuc.text, function (index, item) {
+                                        var text1 = '<span style="  display:flex; flex-direction: column; margin-bottom:10px;" >' + item.Text + '&emsp;&emsp;&emsp;&emsp;&emsp;' + item.Value + '</span>'
+                                        $("#item").append(text1);
+                                        say += 25;
+                                    });
+                                    $("#item").css({ height: (say + 85) + 'px' });
+                                    $("#act").css({ visibility: "visible" });
+                                }
+
+
+                            }
+
+
+                        });
+                    },
+
+                    semtgetir: function (ilID) {
+
+                        $.ajax({
+                            //ekstra olarak functionumaza gelen ilID mizi gönderiyoruz
+                            data: { "ilID": ilID, "tip": "semtgetir" },
+                            success: function (sonuc) {
+                                //bir önceki kayıtları temizliyorum
+                                $("#semtler option").remove();
+                                $("#semtler").removeClass("rdisabled");
+
+                                if (sonuc.ok) {
+                                    //disabled true yapıyorum
+                                    $("#semtler").prop("disabled", false);
+                                    $.each(sonuc.text, function (index, item) {
+                                        var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                        $("#semtler").append(optionhtml);
+
+                                    });
+
+                                } else {
+                                    $.each(sonuc.text, function (index, item) {
+                                        var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                        $("#semtler").append(optionhtml);
+
+                                    });
+                                }
+                            }
+                        });
+                    }, sipariskontrol: function () {
+                        $.ajax({
+                            data: { "tip": "sipariskontrol" },
+                            success: function (sonuc) {
+
+                                if (sonuc.ok) {
+
+                                    $.each(sonuc.text, function (index, item) {
+                                        
+                                        if (sonuc.yazi1) {
+                                            var flexyazi = '<span id="silseri" style="  display:flex; flex-direction: column; margin-bottom:10px;" >' + item.Text + '&emsp;&emsp;&emsp;' + item.Value + '&emsp;&emsp;&emsp;' + "Siparişiniz onaylandı" + '</span>';
+                                            $("#sptab").append(flexyazi);
+                                        }
+                                        else if (sonuc.yazi) {
+                                            var flexyazi = '<span id="silseri" style="  display:flex; flex-direction: column; margin-bottom:10px;" >' + item.Text + '&emsp;&emsp;&emsp;' + item.Value + '&emsp;&emsp;&emsp;' + "Siparişiniz Yoldadır" + '</span>';
+                                            $("#sptab").append(flexyazi);
+                                        }
+                                        else {
+                                            var flexyazi = '<span id="silseri" style="  display:flex; flex-direction: column; margin-bottom:10px;" >' + item.Text + '&emsp;&emsp;&emsp;' + item.Value + '&emsp;&emsp;&emsp;' + "Siparişiniz Hazırlanıyor" + '</span>';
+                                            $("#sptab").append(flexyazi);
+                                        }
+
+
+
+                                    });
+                                }
+
+
+                            }
+                        });
+                    }, siparisver: function () {
+                        $.ajax({
+                            data: { "tip": "siparisver" },
+                            success: function (sonuc) {
+                                if (sonuc.ok) {
+                                    alert("Siparişiniz alınmıştır");
+
+                                    window.location.href = '/';
+                                }
+                                else {
+                                    alert("Lütfen daha önce verdiğiniz siparişi bekleyiniz");
+                                }
+
+                            }
+                        });
+                    }, adresgetir: function () {
+                        $.ajax({
+                            data: { "tip": "adresgetir" },
+                            success: function (sonuc) {
+                                //gelen sonucumuz kontrol ediyoruz ona göre selectimze append işlemi gerçekleştiyoruz
+                                if (sonuc.ok) {
+
+                                    $.each(sonuc.text, function (index, item) {
+
+                                        var deger = '<span class="tunoadreslabel" id="adreslabel" title="' + item.Text + '"style="font-size:9px!important;">' + item.Text + " </span>";
+                                        $("#adresekles").append(deger);
+
+                                    });
+
+                                }
+                                else {
+                                    $.each(sonuc.text, function (index, item) {
+                                        var deger = '<span class="tunoadreslabel" id="adreslabel" title="' + item.Text + '"style="font-size:9px!important;">' + item.Text + " </span>";
+
+                                        $("#adresekles").append(deger);
+
+                                    });
+
+                                }
+                            }
+                        });
+                    }
+
+
+
+                });
+                $("#ilcelers").on("change", function () {
+                    console.log("çalıştı");
+                    $(".rsil").remove();
+                    //seçili olan id alıyoruz
+                    var ilID = $(this).val();
+                    $.semtgetir(ilID);
+                });
+                //ilgetirimizi çalıştıyoruz
+                $.ilceGetir();
+                $.adresgetir();
+                $.sepetkontrol();
+                $.sipariskontrol();
+
+            });
+
+            $(document).ready(function () {
+
+
+                $("#Button1").click(function () {
+
+                    //--------- JSON Verisini Bu Arada Oluşturdum--------------------
+                    var hizmetim = {
+                        atown: $("#ilcelers").val(),
+                        adistrict: $("#semtler").val(),
+                        aadres: $("#adres").val()
+
+                    }
+
+                    //--------- JSON Verisini Bu Arada Oluşturdum--------------------
+
+                    $.ajax({
+                        url: "/Shared/adreskayit",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: hizmetim,
+                        success: function (data) {
+                            window.location.reload();
+                            alert(data);
+
+                        }
+                    });
+
+
+                });
+                $("#arabuton").click(function () {
+
+                    //--------- JSON Verisini Bu Arada Oluşturdum--------------------
+                    var seller = { Rname: $("#arakel").val() }
+                   
+
+
+
+                    //--------- JSON Verisini Bu Arada Oluşturdum--------------------
+
+                    $.ajax({
+                        url: "/Shared/kelimekaydet",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: seller,
+                        success: function (data) {
+                            window.location.href = '/hesap/tamirciara';
+                          
+
+                        }
+                    });
+
+                });
+            });
+        });
+        
+    </script>
+    @RenderBody()
+   
+
+</body>
+</html>

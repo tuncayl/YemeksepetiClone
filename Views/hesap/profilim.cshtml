@@ -1,0 +1,295 @@
+﻿
+@{
+    var cookie = Request.Cookies["Kullancibilgi"];
+}
+@{
+    Layout =null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="~/Content/css/stylev.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>TamirciSepeti</title>
+
+
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <div class="hcontainer">
+                <div class="rows">
+                    <div class="logo">
+                        <a href="~/" style="text-decoration:none">
+                            <p class="tmr">Tamircisepeti </p>
+                        </a>
+                    </div>
+                    <div id="adreskutu" class="col-md-4">
+                        <div class="select">
+                            <select name="Adres" id="adres" class="adres">
+                                <option value="acıpayam">Acıpayam</option>
+                                <option value="merkezefendi">Merkezefendi</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-7" id="aramakutusu">
+                        <input class="form-control searchbox" placeholder="Tamirci arayın..." type="text" tabindex="1" autocomplete="off" />
+                    </div>
+                    <div class="col-md-1 " id="ara">
+                        <button type="button" tabindex="2" aria-label="ARA" class=" searcbutton">
+                            <span class="araimg"> <img src="~/content/img/sadsa.png" /> </span>
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+    <div class="highlight">
+        <div class="parallax">
+
+            <img src="~/Content/img/Gamification.jpg" alt="Profilim" style="top:-40px;" />
+        </div>
+        <div class="tcontainer">
+            <div class="rows">
+                <div class="col-16-33">
+                    <h2>Profil Bilgilerim</h2>
+                    <div class="breadcrumb" itemprop="breadcrumb" style="display:block;">
+                        <a href="~/">Tamirci sepeti</a>
+                        <i class="ys-icons ys-icons-smallRightArrow breadcrumb-arrow"></i>
+                        <span>Profil Bilgilerim</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="containermain" style="height:1718.72px">
+        <div class="rows" style="height:1698.72px;">
+            <div class="leftys" style="height:550px;">
+                <div id="basketcontainer" class="affixare">
+                    <div class="usercontents" id="usercontent" style="width:240px;height:56px">
+                        <div class="ys-userInfo" id="user-info">
+                            <div class="ys-pullLeft">
+                                <div class="">
+                                    <img class="ys-profile-picture" id="ysUserPicture" alt="." src="~/Content/img/pp.png">
+                                </div>
+
+                            </div>
+                            <div class="ys-pullRight">
+                                <div class="ys-user-info-container withPoint">
+
+                                    <div>
+                                        <b id="ysUsername">@cookie["isim"] @cookie["soyisim"]</b>
+
+
+                                    </div>
+                                    <div style="font-size: 11px; color: #333; ">
+                                        6,795 Toplam Puan
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="ys-userDetails" style="display:none;">
+                            <div class="ys-userSettings">
+                                <ul>
+                                    <li> <a id="goToMyProFile" href="/hesap/profilim">Profilim</a></li>
+                                    <li> <a href="/hesap/siparişlerim">Siparişlerim</a></li>
+                                    <li> <a href="/hesap/favorilerim">Favorilerim</a></li>
+                                    <li><a href="/hesap/adreslerim"> Adreslerim</a></li>
+                                    <li><a href="/hesap/bilgilerim">Bilgilerim</a></li>
+                                </ul>
+                            </div>
+                            <div class="ys-userActions">
+                                <a class="btnUserLogout" href="~/Security/logout">ÇIKIŞ YAP</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ys-basket">
+                        <div class="header">
+                            <span>TAMİRCİ SİPARİŞİM</span>
+                        </div>
+                        <div class="itemlist">
+                            <table>
+                                <tbody class="items"> </tbody>
+                            </table>
+                        </div>
+                        <div class="noitem" id="item">
+                            <i id="var1" class="ys-icons ys-icons-Standard-icons-empty-basket-icon"></i>
+                            <span id="var2">Sepetiniz henüz boş.</span>
+                        </div>
+                        <div class="actions" id="act" style="visibility:hidden">
+                            <button id="siparisbtn" class="ys-btn ys-btn-block ys-btn-primary confirm-basket">
+                                SEPETİ ONAYLA
+                            </button>
+                            <button id="silbtn" class="ys-btn ys-btn-block ys-btn-primary confirm-basket" style="background:red!important;">
+                                SEPETİ SİL
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="ysright" style="width: 75%; height:1698.72px;">
+                <div class="ys-panel ys-tabs ys-panel-big-white profile-tabs">
+                    <div class="panel-tabs">
+                        <ul class="navimtab" role="tablist">
+                            <li class="active" style="margin-left:0px;">
+                                <a href="/hesap/profilim">
+                                    <i class="ys-icons ys-icons-userIcon"></i>
+                                     Profilim
+                                </a>
+                                
+                            </li>
+                            <li style="width:130px;">
+                                <a style="width:130px;" href="/hesap/siparişlerim">
+                                    <i class="ys-icons ys-icons-calendar"></i>
+                                    Siparişlerim
+                                </a>
+                            </li>
+                            <li style="width:130px;">
+                                <a style="width:125px;" href="/hesap/favorilerim">
+                                    <i class="ys-icons ys-icons-star"></i>
+                                    Favorilerim
+                                </a>
+                            </li>
+                            <li style="width:130px;">
+                                <a style="width:125px;"  href="/hesap/adreslerim">
+                                    <i class="ys-icons ys-icons-locate"></i>
+                                    Adreslerim
+                                </a>
+                            </li>
+                            <li style="width:130px;">
+                                <a style="width:125px;" href="/hesap/bilgilerim">
+                                    <i class="ys-icons ys-icons-Standard-settings-gear"></i>
+                                    Bilgilerim
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <footer class="ysfooter">
+        <div class="ftop">
+            <div style="height:100px;" class="fcontainer">
+                <div class="frow">
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> S.S.S. ve İşlem Rehberi</a></li>
+                            <li><a href="/"> Kullanıcı Sözleşmesi</a></li>
+                            <li><a href="/"> Aydınlatma Metni</a></li>
+                            <li><a href="/"> Bilgi Toplumu Hizmetleri</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> İletişim</a></li>
+                            <li><a href="/"> Fırsatlar</a></li>
+                            <li><a href="/cantahome/home" target="_blank"> Dükkan Portal</a></li>
+                            <li><a href="/"> Dükkan Öner</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi sehirdegistir cold-md-offset-4">
+                        <a href="/" class="ys-btn ys-btn-sehirdegistir" style="height:32px;">
+                            20
+                            <span class="sehirdegistirspan">ŞEHİR DEĞİŞTİR</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fmid">
+            <div class="fmidcontainer"></div>
+            <div class="fmidbottom"> </div>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(() => {
+            $('#usercontent').on('click', () => {
+                if ($('#usercontent').hasClass('active')) {
+                    $('#usercontent').removeClass('active')
+
+                    //$('#usercontent').css('height', '56px')
+                    $('#usercontent').animate({
+                        height: '56px',
+
+                    }, 500)
+
+                    $('.ys-userDetails').animate({
+                        height: '56px',
+
+                    }, 500)
+
+                    setTimeout(function () { $('.ys-userDetails').css('display', 'none'); }, 400);
+                    //alert("çalıştı kral")
+
+                }
+                else {
+                    //alert("çalıştıyor");
+                    $('#usercontent').addClass('active')
+
+                    $('#usercontent').animate({
+                        height: '272px',
+
+                    }, 500)
+
+                    $('.ys-userDetails').animate({
+                        height: '177px',
+
+                    }, 500)
+                    setTimeout(function () { $('.ys-userDetails').css('display', 'block'); }, 200);
+                }
+
+            });
+
+
+        });
+        $(document).scroll(function () {
+            var y = $(document).scrollTop(),
+                leftys = $(".affixare");
+            if (y >= 100)
+            {
+                leftys.addClass("affix");
+
+            }
+            else
+            {
+                leftys.removeClass("affix");
+
+            }
+        })
+    </script>
+
+</body>
+</html>

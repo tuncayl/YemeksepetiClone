@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="~/Content/css/stylev.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <title>@ViewBag.title</title>
+
+
+</head>
+<body style="font-size:13px!important">
+    <header>
+        <div class="inner">
+            <div class="hcontainer">
+                <div class="rows">
+                    <div class="logo">
+                        <a href="~/" style="text-decoration:none">
+                            <p class="tmr">Tamircisepeti </p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="highlight">
+        <div class="parallax">
+            <img class="parallaximg" src="~/Content/img/Profil.jpg" alt="Üye Ol" style="top:-40px;" />
+        </div>
+        <div class="kcontainer" style="height:91px;">
+            <div class="row1">
+                <div class="col-16-3" style="padding-top:15px;">
+                    <h1> ÜYE OL</h1>
+                    <a style="color: #fa0050; text-decoration: underline; font-size: 14px; " href="/">Tamirci Sepeti </a>
+                    <i class="smallrighticon"></i>
+                    <span style="font-size:12px;">Üye Ol</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="registermain">
+        <div class="row2">
+            <div class="col-md-16">
+                <div style="height:840.6px;" class="register">
+                    <div class="kcontainer">
+                        <div class="row3">
+                            <div class="col-md-16">
+                                <div style="height:840.6px" class="col-16-9 pull-left">
+                                    <div class="fbLogin col-md-14">
+                                        <h3 style="font-size:15px;" class="socialLoginHeader">
+                                            Sosyal Ağ ile üye ol
+                                        </h3>
+                                        <button style="width:224.7px;height:35.98px" class="ys-btn ys-btn-facebook pull-right">
+                                            <i class="ys-icons ys-icons-whiteFb"></i>
+                                            <div id="text" style="font-size:15px; top:-22px">Facebook ile üye ol</div>
+                                        </button>
+                                    </div>
+                                    <div class="borders">
+                                        <div>veya</div>
+                                    </div>
+                                    <h3 class="formHeader">E-Posta ile üye ol</h3>
+                                    <br />
+                                    <form class="form-horizontal" role="form" action="/Kayıt/_Kayıt" method="post" id="register-form">
+                                        <div class="form-group">
+                                            <label for="inputEmail" class="col-16-3 control-label" title="* İşaretli alanların doldurulması zorunludur.">
+                                                <span class="required">*</span>
+                                                E-Posta:
+                                            </label>
+                                            <div class="col-16-9 col-md-offset-2">
+                                                <input type="text" class="form-control" id="inputEmail" name="Uemail" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Kullanciadi" class="col-16-3 control-label" title="* İşaretli alanların doldurulması zorunludur.">
+                                                <span class="required">*</span>
+                                                Kullancı Adı:
+                                            </label>
+                                            <div class="col-16-9 col-md-offset-2">
+                                                <input type="text" class="form-control" id="inputKullanciadi" name="UKullaniciad" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group password-level-wrapper">
+                                            <label for="inputPassword" class="col-16-3 control-label" title="* İşaretli alanların doldurulması zorunludur.">
+                                                <span class="required">*</span>
+                                                Şifre:
+                                            </label>
+                                            <div class="col-16-9 col-md-offset-2">
+                                                <input type="password" class="form-control" id="inputPassword" name="Upassword" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputRepeatPassword" class="col-16-3 control-label" title="* İşaretli alanların doldurulması zorunludur.">
+                                                <span class="required">*</span>
+                                                Şifre Tekrar:
+                                            </label>
+                                            <div class="col-16-9 col-md-offset-2">
+                                                <input type="password" class="form-control" id="inputRepeatPassword" name="RepeatPassword" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputFirstName" class="col-16-3 control-label" title="* İşaretli alanların doldurulması zorunludur.">
+                                                <span class="required">*</span>
+                                                Ad:
+                                            </label>
+                                            <div class="col-16-9 col-md-offset-2">
+                                                <input type="text" class="form-control" id="inputFirstName" name="Uname" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputlastName" class="col-16-3 control-label" title="* İşaretli alanların doldurulması zorunludur.">
+                                                <span class="required">*</span>
+                                                Soyad:
+                                            </label>
+                                            <div class="col-16-9 col-md-offset-2">
+                                                <input type="text" class="form-control" id="inputLastName" name="USurname" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputBirthDate" class="col-16-3 control-label birthday">
+                                                Doğum Tarihi:
+                                                <p class="ys-text-info"> (Gün.Ay.Yıl)</p>
+                                            </label>
+                                            <div class="col-16-9 col-md-offset-2">
+                                                <input type="date" class="form-control" id="inputBirthDate" name="Utarih" />
+                                            </div>
+                                        </div>
+                                        <div class="register-footer col-md-99 pull-right" style="height:295px;">
+                                            <div class="userAgreementSettings">
+                                                <div id="informationNotice">
+                                                    Aydınlatma Metnini Okumak İçin
+                                                    <a style="color: #fa0050;" href="/">tıklayınız</a>
+                                                </div>
+                                                <div class="form-group" style="height:110px">
+                                                    <input type="checkbox" id="inputAcceptEula" name="AcceptEula" value="true" />
+                                                    <label for="inputAcceptEula" id="formUA">
+                                                        <a style="color: #fa0050" class="btn-link-u" href="/">Kullanıcı Sözleşmesini</a>
+                                                        ve
+                                                        <a style="color: #fa0050" class="btn-link-u" href="/"> Kişisel Verilerin Korunmasını Politikasını</a>
+
+                                                        kabul ediyor ve kullanıcı deneyimimin geliştirilmesi için Tamirci Sepeti’nin verilerimi işleyebileceği,
+                                                        yurtiçi/yurtdışı iş ortaklarıyla paylaşabileceği hususunda açık rıza veriyorum.
+                                                    </label>
+
+                                                </div>
+                                            </div>
+                                            <div style="width:299px; height:107px" class="notificationSettings">
+                                                <div class="form-group">
+                                                    <input type="checkbox" id="inputEmailNotification" name="EmailNotification" value="true">
+                                                    <label for="inputEmailNotification">
+                                                        Bana özel hazırlanmış veya benim için geçerli olan kampanyalar,
+                                                        indirimler ve haberler hakkında e-posta almak istiyorum.
+                                                    </label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" id="inputSmsNotification" name="SmsNotification" value="true">
+                                                    <label for="inputSmsNotification">
+                                                        Bana özel hazırlanmış veya benim için geçerli olan kampanyalar,
+                                                        indirimler ve haberler hakkında SMS almak istiyorum.
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div style="margin-top:15px" class="form-group">
+                                                <div class="col-16-16">
+                                                    <button style="height:3em;" type="submit" class="ys-btn ys-btn-primary ys-btn-xlg ys-btn-block register-button" id="btnLogin">ÜYE OL</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div style="height:524px;" id="steps" class="col-16-7 pull-right">
+                                    <div class="item step-1">
+                                        <img src="~/Content/img/find.png" />
+                                        <div class="info">
+                                            <h3>Semtindeki Restoranlar Burada</h3>
+                                            <p>Adresine gönderim yapan restoranları gör,özel promosyonlardan yararlan.</p>
+                                        </div>
+                                    </div>
+                                    <div class="item step-2">
+                                        <img class="pull-right" src="~/Content/img/noFees.png" />
+                                        <div class="info">
+                                            <h3>Ekstra Ücret Yok</h3>
+                                            <p>Hiçbir ek ücret olmadan, kolayca sipariş ver.</p>
+                                        </div>
+                                    </div>
+                                    <div class="item step-3">
+                                        <img src="~/Content/img/payasyoulike.png" />
+                                        <div class="info">
+                                            <h3>Dilediğin Gibi Öde</h3>
+                                            <p>İster online, ister kapıda nakit ya da kredi kartıyla!.</p>
+                                        </div>
+                                    </div>
+                                    <div class="item step-4">
+                                        <img class="pull-right" src=~/Content/img/support.png />
+                                        <div class="info">
+                                            <h3>7 Gün 24 Saat Kesintisiz Destek</h3>
+                                            <p>Canlı yardım ekibimiz siparişinizle ilgili her konuda destek için hazır.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="ysfooter">
+        <div class="ftop">
+            <div style="height:100px;" class="fcontainer">
+                <div class="frow">
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> S.S.S. ve İşlem Rehberi</a></li>
+                            <li><a href="/"> Kullanıcı Sözleşmesi</a></li>
+                            <li><a href="/"> Aydınlatma Metni</a></li>
+                            <li><a href="/"> Bilgi Toplumu Hizmetleri</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> İletişim</a></li>
+                            <li><a href="/"> Fırsatlar</a></li>
+                            <li><a href="/cantahome/home" target="_blank"> Dükkan Portal</a></li>
+                            <li><a href="/"> Dükkan Öner</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi">
+                        <ul>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                            <li><a href="/"> BOŞ BOŞ BOŞ BOŞ</a></li>
+                        </ul>
+                    </div>
+                    <div class="fyazi sehirdegistir cold-md-offset-4">
+                        <a href="/" class="ys-btn ys-btn-sehirdegistir" style="height:32px;">
+                            20
+                            <span class="sehirdegistirspan">ŞEHİR DEĞİŞTİR</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fmid">
+            <div class="fmidcontainer"></div>
+            <div class="fmidbottom"> </div>
+        </div>
+    </footer>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(function () {
+            $("btnLogin").click(function () {
+                var usarname, surname, password, rp, email, datetime, kullanciadi, sayac;
+                sayac = 0;
+                usarname = $("#register-form,#inputFirstName").val();
+                surname = $("#register-form,#inputLastName").val();
+                password = $("#register-form,#inputPassword").val();
+                rp = $("#register-form,#inputRepeatPassword").val();
+                email = $("#register-form,#inputEmail").val();
+                datetime = $("#register-form,#inputBirthDate").val();
+                kullanciadi = $("#register-form,#inputKullanciadi").val();
+                if (usarname == "") {
+                    $("#inputFirstName").css("border", "1px solid red").css("box-shadow", "0 0 3px red");
+                    sayac++;
+                }
+                if (surname == "") {
+                    $("#inputLastName").css("border", "1px solid red").css("box-shadow", "0 0 3px red");
+                    sayac++;
+                }
+                if (password == "") {
+                    $("#inputPassword").css("border", "1px solid red").css("box-shadow", "0 0 3px red");
+                    $("#inputRepeatPassword").css("border", "1px solid red").css("box-shadow", "0 0 3px red");
+                    sayac++;
+                }
+                if (email == "") {
+                    $("#inputEmail").css("border", "1px solid red").css("box-shadow", "0 0 3px red");
+                    sayac++;
+                }
+                if (datetime == "") {
+                    $("#inputBirthDate").css("border", "1px solid red").css("box-shadow", "0 0 3px red");
+                    sayac++;
+                }
+                if (kullanciadi == "") {
+                    $("#inputKullanciadi").css("border", "1px solid red").css("box-shadow", "0 0 3px red");
+                    sayac++;
+                }
+                if (sayac == 0) {
+                    $.ajax({
+                            url: '@Url.Action("login", "Security")',
+                              type: 'POST',
+                             data: { FormData },
+                            success: function(result) {
+
+                           }
+                     });
+                }
+                sayac = 0;
+
+            });
+        })
+
+
+    </script>
+
+    @RenderBody()
+</body>
+</html>

@@ -1,0 +1,881 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TmrsepetiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="Adresid" />
+          </Key>
+          <Property Name="Adresid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aadres" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="acity" Type="int" Nullable="false" />
+          <Property Name="atown" Type="int" Nullable="false" />
+          <Property Name="adistrict" Type="int" Nullable="false" />
+          <Property Name="asellerid" Type="int" />
+          <Property Name="auid" Type="int" />
+        </EntityType>
+        <EntityType Name="Authority">
+          <Key>
+            <PropertyRef Name="Authid" />
+          </Key>
+          <Property Name="Authid" Type="int" Nullable="false" />
+          <Property Name="Authname" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hizmetler">
+          <Key>
+            <PropertyRef Name="hizmetid" />
+          </Key>
+          <Property Name="hizmetid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hizmetfiyati" Type="int" Nullable="false" />
+          <Property Name="hizmetadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sellerid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ilceler">
+          <Key>
+            <PropertyRef Name="IlceID" />
+          </Key>
+          <Property Name="IlceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IlID" Type="int" />
+          <Property Name="Ilce" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Iller">
+          <Key>
+            <PropertyRef Name="IlID" />
+          </Key>
+          <Property Name="IlID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Il" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Seller">
+          <Key>
+            <PropertyRef Name="Rsellerid" />
+          </Key>
+          <Property Name="Rsellerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rtel" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Rkulad" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Rsifre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Rauthid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sepet">
+          <Key>
+            <PropertyRef Name="sepetid" />
+          </Key>
+          <Property Name="sepetid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hizmetid" Type="int" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="kullanıldı" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="siparisler">
+          <Key>
+            <PropertyRef Name="siparisid" />
+          </Key>
+          <Property Name="siparisid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sellerid" Type="int" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="sepetid" Type="int" Nullable="false" />
+          <Property Name="yolda" Type="bit" Nullable="false" />
+          <Property Name="onaylandı" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tCity_District_Street_Town">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="il" Type="nvarchar" MaxLength="255" />
+          <Property Name="ilce" Type="nvarchar" MaxLength="255" />
+          <Property Name="semt_bucak_belde" Type="nvarchar" MaxLength="255" />
+          <Property Name="mahalle" Type="nvarchar" MaxLength="255" />
+          <Property Name="posta_kodu" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UKullaniciad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Upassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Uemail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Uname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="USurname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Utarih" Type="date" />
+          <Property Name="Uauthid" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Ilceler__IlID__5EBF139D">
+          <End Role="Iller" Type="Self.Iller" Multiplicity="0..1" />
+          <End Role="Ilceler" Type="Self.Ilceler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iller">
+              <PropertyRef Name="IlID" />
+            </Principal>
+            <Dependent Role="Ilceler">
+              <PropertyRef Name="IlID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_Ilceler">
+          <End Role="Ilceler" Type="Self.Ilceler" Multiplicity="1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ilceler">
+              <PropertyRef Name="IlceID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="atown" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_Iller">
+          <End Role="Iller" Type="Self.Iller" Multiplicity="1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iller">
+              <PropertyRef Name="IlID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="acity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="Rsellerid" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="asellerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_tCity_District_Street_Town">
+          <End Role="tCity_District_Street_Town" Type="Self.tCity_District_Street_Town" Multiplicity="1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCity_District_Street_Town">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="adistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_users">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="auid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hizmetler_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+          <End Role="hizmetler" Type="Self.hizmetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="Rsellerid" />
+            </Principal>
+            <Dependent Role="hizmetler">
+              <PropertyRef Name="sellerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seller_Authority1">
+          <End Role="Authority" Type="Self.Authority" Multiplicity="1" />
+          <End Role="Seller" Type="Self.Seller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authority">
+              <PropertyRef Name="Authid" />
+            </Principal>
+            <Dependent Role="Seller">
+              <PropertyRef Name="Rauthid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sepet_hizmetler">
+          <End Role="hizmetler" Type="Self.hizmetler" Multiplicity="1" />
+          <End Role="sepet" Type="Self.sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hizmetler">
+              <PropertyRef Name="hizmetid" />
+            </Principal>
+            <Dependent Role="sepet">
+              <PropertyRef Name="hizmetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sepet_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="sepet" Type="Self.sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="sepet">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_siparisler_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="1" />
+          <End Role="siparisler" Type="Self.siparisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="Rsellerid" />
+            </Principal>
+            <Dependent Role="siparisler">
+              <PropertyRef Name="sellerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_siparisler_sepet">
+          <End Role="sepet" Type="Self.sepet" Multiplicity="1" />
+          <End Role="siparisler" Type="Self.siparisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sepet">
+              <PropertyRef Name="sepetid" />
+            </Principal>
+            <Dependent Role="siparisler">
+              <PropertyRef Name="sepetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_siparisler_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="siparisler" Type="Self.siparisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="siparisler">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_Authority">
+          <End Role="Authority" Type="Self.Authority" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authority">
+              <PropertyRef Name="Authid" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="Uauthid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TmrsepetiModelStoreContainer">
+          <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authority" EntityType="Self.Authority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hizmetler" EntityType="Self.hizmetler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ilceler" EntityType="Self.Ilceler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Iller" EntityType="Self.Iller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seller" EntityType="Self.Seller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sepet" EntityType="Self.sepet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="siparisler" EntityType="Self.siparisler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCity_District_Street_Town" EntityType="Self.tCity_District_Street_Town" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Ilceler__IlID__5EBF139D" Association="Self.FK__Ilceler__IlID__5EBF139D">
+            <End Role="Iller" EntitySet="Iller" />
+            <End Role="Ilceler" EntitySet="Ilceler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_Ilceler" Association="Self.FK_Adres_Ilceler">
+            <End Role="Ilceler" EntitySet="Ilceler" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_Iller" Association="Self.FK_Adres_Iller">
+            <End Role="Iller" EntitySet="Iller" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_Seller" Association="Self.FK_Adres_Seller">
+            <End Role="Seller" EntitySet="Seller" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_tCity_District_Street_Town" Association="Self.FK_Adres_tCity_District_Street_Town">
+            <End Role="tCity_District_Street_Town" EntitySet="tCity_District_Street_Town" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_users" Association="Self.FK_Adres_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hizmetler_Seller" Association="Self.FK_hizmetler_Seller">
+            <End Role="Seller" EntitySet="Seller" />
+            <End Role="hizmetler" EntitySet="hizmetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seller_Authority1" Association="Self.FK_Seller_Authority1">
+            <End Role="Authority" EntitySet="Authority" />
+            <End Role="Seller" EntitySet="Seller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sepet_hizmetler" Association="Self.FK_sepet_hizmetler">
+            <End Role="hizmetler" EntitySet="hizmetler" />
+            <End Role="sepet" EntitySet="sepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sepet_users" Association="Self.FK_sepet_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="sepet" EntitySet="sepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_siparisler_Seller" Association="Self.FK_siparisler_Seller">
+            <End Role="Seller" EntitySet="Seller" />
+            <End Role="siparisler" EntitySet="siparisler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_siparisler_sepet" Association="Self.FK_siparisler_sepet">
+            <End Role="sepet" EntitySet="sepet" />
+            <End Role="siparisler" EntitySet="siparisler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_siparisler_users" Association="Self.FK_siparisler_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="siparisler" EntitySet="siparisler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_Authority" Association="Self.FK_users_Authority">
+            <End Role="Authority" EntitySet="Authority" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TmrsepetiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TmrsepetiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adres" EntityType="TmrsepetiModel.Adre" />
+          <EntitySet Name="Authorities" EntityType="TmrsepetiModel.Authority" />
+          <EntitySet Name="hizmetlers" EntityType="TmrsepetiModel.hizmetler" />
+          <EntitySet Name="Ilcelers" EntityType="TmrsepetiModel.Ilceler" />
+          <EntitySet Name="Illers" EntityType="TmrsepetiModel.Iller" />
+          <EntitySet Name="Sellers" EntityType="TmrsepetiModel.Seller" />
+          <EntitySet Name="sepets" EntityType="TmrsepetiModel.sepet" />
+          <EntitySet Name="siparislers" EntityType="TmrsepetiModel.siparisler" />
+          <EntitySet Name="sysdiagrams" EntityType="TmrsepetiModel.sysdiagram" />
+          <EntitySet Name="tCity_District_Street_Town" EntityType="TmrsepetiModel.tCity_District_Street_Town" />
+          <EntitySet Name="users" EntityType="TmrsepetiModel.user" />
+          <AssociationSet Name="FK_Adres_Ilceler" Association="TmrsepetiModel.FK_Adres_Ilceler">
+            <End Role="Ilceler" EntitySet="Ilcelers" />
+            <End Role="Adre" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_Iller" Association="TmrsepetiModel.FK_Adres_Iller">
+            <End Role="Iller" EntitySet="Illers" />
+            <End Role="Adre" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_Seller" Association="TmrsepetiModel.FK_Adres_Seller">
+            <End Role="Seller" EntitySet="Sellers" />
+            <End Role="Adre" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_tCity_District_Street_Town" Association="TmrsepetiModel.FK_Adres_tCity_District_Street_Town">
+            <End Role="tCity_District_Street_Town" EntitySet="tCity_District_Street_Town" />
+            <End Role="Adre" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_users" Association="TmrsepetiModel.FK_Adres_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="Adre" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seller_Authority1" Association="TmrsepetiModel.FK_Seller_Authority1">
+            <End Role="Authority" EntitySet="Authorities" />
+            <End Role="Seller" EntitySet="Sellers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_Authority" Association="TmrsepetiModel.FK_users_Authority">
+            <End Role="Authority" EntitySet="Authorities" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hizmetler_Seller" Association="TmrsepetiModel.FK_hizmetler_Seller">
+            <End Role="Seller" EntitySet="Sellers" />
+            <End Role="hizmetler" EntitySet="hizmetlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sepet_hizmetler" Association="TmrsepetiModel.FK_sepet_hizmetler">
+            <End Role="hizmetler" EntitySet="hizmetlers" />
+            <End Role="sepet" EntitySet="sepets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ilceler__IlID__5EBF139D" Association="TmrsepetiModel.FK__Ilceler__IlID__5EBF139D">
+            <End Role="Iller" EntitySet="Illers" />
+            <End Role="Ilceler" EntitySet="Ilcelers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_siparisler_Seller" Association="TmrsepetiModel.FK_siparisler_Seller">
+            <End Role="Seller" EntitySet="Sellers" />
+            <End Role="siparisler" EntitySet="siparislers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sepet_users" Association="TmrsepetiModel.FK_sepet_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="sepet" EntitySet="sepets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_siparisler_sepet" Association="TmrsepetiModel.FK_siparisler_sepet">
+            <End Role="sepet" EntitySet="sepets" />
+            <End Role="siparisler" EntitySet="siparislers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_siparisler_users" Association="TmrsepetiModel.FK_siparisler_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="siparisler" EntitySet="siparislers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Adre">
+          <Key>
+            <PropertyRef Name="Adresid" />
+          </Key>
+          <Property Name="Adresid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aadres" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="acity" Type="Int32" Nullable="false" />
+          <Property Name="atown" Type="Int32" Nullable="false" />
+          <Property Name="adistrict" Type="Int32" Nullable="false" />
+          <Property Name="asellerid" Type="Int32" />
+          <Property Name="auid" Type="Int32" />
+          <NavigationProperty Name="Ilceler" Relationship="TmrsepetiModel.FK_Adres_Ilceler" FromRole="Adre" ToRole="Ilceler" />
+          <NavigationProperty Name="Iller" Relationship="TmrsepetiModel.FK_Adres_Iller" FromRole="Adre" ToRole="Iller" />
+          <NavigationProperty Name="Seller" Relationship="TmrsepetiModel.FK_Adres_Seller" FromRole="Adre" ToRole="Seller" />
+          <NavigationProperty Name="tCity_District_Street_Town" Relationship="TmrsepetiModel.FK_Adres_tCity_District_Street_Town" FromRole="Adre" ToRole="tCity_District_Street_Town" />
+          <NavigationProperty Name="user" Relationship="TmrsepetiModel.FK_Adres_users" FromRole="Adre" ToRole="user" />
+        </EntityType>
+        <EntityType Name="Authority">
+          <Key>
+            <PropertyRef Name="Authid" />
+          </Key>
+          <Property Name="Authid" Type="Int32" Nullable="false" />
+          <Property Name="Authname" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Sellers" Relationship="TmrsepetiModel.FK_Seller_Authority1" FromRole="Authority" ToRole="Seller" />
+          <NavigationProperty Name="users" Relationship="TmrsepetiModel.FK_users_Authority" FromRole="Authority" ToRole="user" />
+        </EntityType>
+        <EntityType Name="hizmetler">
+          <Key>
+            <PropertyRef Name="hizmetid" />
+          </Key>
+          <Property Name="hizmetid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hizmetfiyati" Type="Int32" Nullable="false" />
+          <Property Name="hizmetadi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sellerid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Seller" Relationship="TmrsepetiModel.FK_hizmetler_Seller" FromRole="hizmetler" ToRole="Seller" />
+          <NavigationProperty Name="sepets" Relationship="TmrsepetiModel.FK_sepet_hizmetler" FromRole="hizmetler" ToRole="sepet" />
+        </EntityType>
+        <EntityType Name="Ilceler">
+          <Key>
+            <PropertyRef Name="IlceID" />
+          </Key>
+          <Property Name="IlceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IlID" Type="Int32" />
+          <Property Name="Ilce" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adres" Relationship="TmrsepetiModel.FK_Adres_Ilceler" FromRole="Ilceler" ToRole="Adre" />
+          <NavigationProperty Name="Iller" Relationship="TmrsepetiModel.FK__Ilceler__IlID__5EBF139D" FromRole="Ilceler" ToRole="Iller" />
+        </EntityType>
+        <EntityType Name="Iller">
+          <Key>
+            <PropertyRef Name="IlID" />
+          </Key>
+          <Property Name="IlID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Il" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adres" Relationship="TmrsepetiModel.FK_Adres_Iller" FromRole="Iller" ToRole="Adre" />
+          <NavigationProperty Name="Ilcelers" Relationship="TmrsepetiModel.FK__Ilceler__IlID__5EBF139D" FromRole="Iller" ToRole="Ilceler" />
+        </EntityType>
+        <EntityType Name="Seller">
+          <Key>
+            <PropertyRef Name="Rsellerid" />
+          </Key>
+          <Property Name="Rsellerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rtel" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Rkulad" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Rsifre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Rauthid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adres" Relationship="TmrsepetiModel.FK_Adres_Seller" FromRole="Seller" ToRole="Adre" />
+          <NavigationProperty Name="Authority" Relationship="TmrsepetiModel.FK_Seller_Authority1" FromRole="Seller" ToRole="Authority" />
+          <NavigationProperty Name="hizmetlers" Relationship="TmrsepetiModel.FK_hizmetler_Seller" FromRole="Seller" ToRole="hizmetler" />
+          <NavigationProperty Name="siparislers" Relationship="TmrsepetiModel.FK_siparisler_Seller" FromRole="Seller" ToRole="siparisler" />
+        </EntityType>
+        <EntityType Name="sepet">
+          <Key>
+            <PropertyRef Name="sepetid" />
+          </Key>
+          <Property Name="sepetid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hizmetid" Type="Int32" Nullable="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="kullanıldı" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="hizmetler" Relationship="TmrsepetiModel.FK_sepet_hizmetler" FromRole="sepet" ToRole="hizmetler" />
+          <NavigationProperty Name="user" Relationship="TmrsepetiModel.FK_sepet_users" FromRole="sepet" ToRole="user" />
+          <NavigationProperty Name="siparislers" Relationship="TmrsepetiModel.FK_siparisler_sepet" FromRole="sepet" ToRole="siparisler" />
+        </EntityType>
+        <EntityType Name="siparisler">
+          <Key>
+            <PropertyRef Name="siparisid" />
+          </Key>
+          <Property Name="siparisid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sellerid" Type="Int32" Nullable="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="sepetid" Type="Int32" Nullable="false" />
+          <Property Name="yolda" Type="Boolean" Nullable="false" />
+          <Property Name="onaylandı" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Seller" Relationship="TmrsepetiModel.FK_siparisler_Seller" FromRole="siparisler" ToRole="Seller" />
+          <NavigationProperty Name="sepet" Relationship="TmrsepetiModel.FK_siparisler_sepet" FromRole="siparisler" ToRole="sepet" />
+          <NavigationProperty Name="user" Relationship="TmrsepetiModel.FK_siparisler_users" FromRole="siparisler" ToRole="user" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tCity_District_Street_Town">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="il" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ilce" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="semt_bucak_belde" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="mahalle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="posta_kodu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adres" Relationship="TmrsepetiModel.FK_Adres_tCity_District_Street_Town" FromRole="tCity_District_Street_Town" ToRole="Adre" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UKullaniciad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Upassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Uemail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Uname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USurname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Utarih" Type="DateTime" Precision="0" />
+          <Property Name="Uauthid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adres" Relationship="TmrsepetiModel.FK_Adres_users" FromRole="user" ToRole="Adre" />
+          <NavigationProperty Name="Authority" Relationship="TmrsepetiModel.FK_users_Authority" FromRole="user" ToRole="Authority" />
+          <NavigationProperty Name="sepets" Relationship="TmrsepetiModel.FK_sepet_users" FromRole="user" ToRole="sepet" />
+          <NavigationProperty Name="siparislers" Relationship="TmrsepetiModel.FK_siparisler_users" FromRole="user" ToRole="siparisler" />
+        </EntityType>
+        <Association Name="FK_Adres_Ilceler">
+          <End Type="TmrsepetiModel.Ilceler" Role="Ilceler" Multiplicity="1" />
+          <End Type="TmrsepetiModel.Adre" Role="Adre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ilceler">
+              <PropertyRef Name="IlceID" />
+            </Principal>
+            <Dependent Role="Adre">
+              <PropertyRef Name="atown" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_Iller">
+          <End Type="TmrsepetiModel.Iller" Role="Iller" Multiplicity="1" />
+          <End Type="TmrsepetiModel.Adre" Role="Adre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iller">
+              <PropertyRef Name="IlID" />
+            </Principal>
+            <Dependent Role="Adre">
+              <PropertyRef Name="acity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_Seller">
+          <End Type="TmrsepetiModel.Seller" Role="Seller" Multiplicity="0..1" />
+          <End Type="TmrsepetiModel.Adre" Role="Adre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="Rsellerid" />
+            </Principal>
+            <Dependent Role="Adre">
+              <PropertyRef Name="asellerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_tCity_District_Street_Town">
+          <End Type="TmrsepetiModel.tCity_District_Street_Town" Role="tCity_District_Street_Town" Multiplicity="1" />
+          <End Type="TmrsepetiModel.Adre" Role="Adre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCity_District_Street_Town">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Adre">
+              <PropertyRef Name="adistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_users">
+          <End Type="TmrsepetiModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="TmrsepetiModel.Adre" Role="Adre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="Adre">
+              <PropertyRef Name="auid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seller_Authority1">
+          <End Type="TmrsepetiModel.Authority" Role="Authority" Multiplicity="1" />
+          <End Type="TmrsepetiModel.Seller" Role="Seller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authority">
+              <PropertyRef Name="Authid" />
+            </Principal>
+            <Dependent Role="Seller">
+              <PropertyRef Name="Rauthid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_Authority">
+          <End Type="TmrsepetiModel.Authority" Role="Authority" Multiplicity="1" />
+          <End Type="TmrsepetiModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authority">
+              <PropertyRef Name="Authid" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="Uauthid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hizmetler_Seller">
+          <End Type="TmrsepetiModel.Seller" Role="Seller" Multiplicity="1" />
+          <End Type="TmrsepetiModel.hizmetler" Role="hizmetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="Rsellerid" />
+            </Principal>
+            <Dependent Role="hizmetler">
+              <PropertyRef Name="sellerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sepet_hizmetler">
+          <End Type="TmrsepetiModel.hizmetler" Role="hizmetler" Multiplicity="1" />
+          <End Type="TmrsepetiModel.sepet" Role="sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hizmetler">
+              <PropertyRef Name="hizmetid" />
+            </Principal>
+            <Dependent Role="sepet">
+              <PropertyRef Name="hizmetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ilceler__IlID__5EBF139D">
+          <End Type="TmrsepetiModel.Iller" Role="Iller" Multiplicity="0..1" />
+          <End Type="TmrsepetiModel.Ilceler" Role="Ilceler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iller">
+              <PropertyRef Name="IlID" />
+            </Principal>
+            <Dependent Role="Ilceler">
+              <PropertyRef Name="IlID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_siparisler_Seller">
+          <End Type="TmrsepetiModel.Seller" Role="Seller" Multiplicity="1" />
+          <End Type="TmrsepetiModel.siparisler" Role="siparisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="Rsellerid" />
+            </Principal>
+            <Dependent Role="siparisler">
+              <PropertyRef Name="sellerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sepet_users">
+          <End Type="TmrsepetiModel.user" Role="user" Multiplicity="1" />
+          <End Type="TmrsepetiModel.sepet" Role="sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="sepet">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_siparisler_sepet">
+          <End Type="TmrsepetiModel.sepet" Role="sepet" Multiplicity="1" />
+          <End Type="TmrsepetiModel.siparisler" Role="siparisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sepet">
+              <PropertyRef Name="sepetid" />
+            </Principal>
+            <Dependent Role="siparisler">
+              <PropertyRef Name="sepetid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_siparisler_users">
+          <End Type="TmrsepetiModel.user" Role="user" Multiplicity="1" />
+          <End Type="TmrsepetiModel.siparisler" Role="siparisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="siparisler">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TmrsepetiModelStoreContainer" CdmEntityContainer="TmrsepetiEntities">
+          <EntitySetMapping Name="Adres">
+            <EntityTypeMapping TypeName="TmrsepetiModel.Adre">
+              <MappingFragment StoreEntitySet="Adres">
+                <ScalarProperty Name="auid" ColumnName="auid" />
+                <ScalarProperty Name="asellerid" ColumnName="asellerid" />
+                <ScalarProperty Name="adistrict" ColumnName="adistrict" />
+                <ScalarProperty Name="atown" ColumnName="atown" />
+                <ScalarProperty Name="acity" ColumnName="acity" />
+                <ScalarProperty Name="aadres" ColumnName="aadres" />
+                <ScalarProperty Name="Adresid" ColumnName="Adresid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authorities">
+            <EntityTypeMapping TypeName="TmrsepetiModel.Authority">
+              <MappingFragment StoreEntitySet="Authority">
+                <ScalarProperty Name="Authname" ColumnName="Authname" />
+                <ScalarProperty Name="Authid" ColumnName="Authid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hizmetlers">
+            <EntityTypeMapping TypeName="TmrsepetiModel.hizmetler">
+              <MappingFragment StoreEntitySet="hizmetler">
+                <ScalarProperty Name="sellerid" ColumnName="sellerid" />
+                <ScalarProperty Name="hizmetadi" ColumnName="hizmetadi" />
+                <ScalarProperty Name="hizmetfiyati" ColumnName="hizmetfiyati" />
+                <ScalarProperty Name="hizmetid" ColumnName="hizmetid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ilcelers">
+            <EntityTypeMapping TypeName="TmrsepetiModel.Ilceler">
+              <MappingFragment StoreEntitySet="Ilceler">
+                <ScalarProperty Name="Ilce" ColumnName="Ilce" />
+                <ScalarProperty Name="IlID" ColumnName="IlID" />
+                <ScalarProperty Name="IlceID" ColumnName="IlceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Illers">
+            <EntityTypeMapping TypeName="TmrsepetiModel.Iller">
+              <MappingFragment StoreEntitySet="Iller">
+                <ScalarProperty Name="Il" ColumnName="Il" />
+                <ScalarProperty Name="IlID" ColumnName="IlID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sellers">
+            <EntityTypeMapping TypeName="TmrsepetiModel.Seller">
+              <MappingFragment StoreEntitySet="Seller">
+                <ScalarProperty Name="Rauthid" ColumnName="Rauthid" />
+                <ScalarProperty Name="Rsifre" ColumnName="Rsifre" />
+                <ScalarProperty Name="Rkulad" ColumnName="Rkulad" />
+                <ScalarProperty Name="Rtel" ColumnName="Rtel" />
+                <ScalarProperty Name="Remail" ColumnName="Remail" />
+                <ScalarProperty Name="Rname" ColumnName="Rname" />
+                <ScalarProperty Name="Rsellerid" ColumnName="Rsellerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sepets">
+            <EntityTypeMapping TypeName="TmrsepetiModel.sepet">
+              <MappingFragment StoreEntitySet="sepet">
+                <ScalarProperty Name="kullanıldı" ColumnName="kullanıldı" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="hizmetid" ColumnName="hizmetid" />
+                <ScalarProperty Name="sepetid" ColumnName="sepetid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="siparislers">
+            <EntityTypeMapping TypeName="TmrsepetiModel.siparisler">
+              <MappingFragment StoreEntitySet="siparisler">
+                <ScalarProperty Name="onaylandı" ColumnName="onaylandı" />
+                <ScalarProperty Name="yolda" ColumnName="yolda" />
+                <ScalarProperty Name="sepetid" ColumnName="sepetid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="sellerid" ColumnName="sellerid" />
+                <ScalarProperty Name="siparisid" ColumnName="siparisid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TmrsepetiModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCity_District_Street_Town">
+            <EntityTypeMapping TypeName="TmrsepetiModel.tCity_District_Street_Town">
+              <MappingFragment StoreEntitySet="tCity_District_Street_Town">
+                <ScalarProperty Name="posta_kodu" ColumnName="posta_kodu" />
+                <ScalarProperty Name="mahalle" ColumnName="mahalle" />
+                <ScalarProperty Name="semt_bucak_belde" ColumnName="semt_bucak_belde" />
+                <ScalarProperty Name="ilce" ColumnName="ilce" />
+                <ScalarProperty Name="il" ColumnName="il" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="TmrsepetiModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Uauthid" ColumnName="Uauthid" />
+                <ScalarProperty Name="Utarih" ColumnName="Utarih" />
+                <ScalarProperty Name="USurname" ColumnName="USurname" />
+                <ScalarProperty Name="Uname" ColumnName="Uname" />
+                <ScalarProperty Name="Uemail" ColumnName="Uemail" />
+                <ScalarProperty Name="Upassword" ColumnName="Upassword" />
+                <ScalarProperty Name="UKullaniciad" ColumnName="UKullaniciad" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

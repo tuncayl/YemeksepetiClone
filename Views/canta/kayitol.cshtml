@@ -1,0 +1,238 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="~/Content/css/stylev.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>Tamircicantam</title>
+</head>
+<body class="selfregistration-body">
+    <div class="kacontainer">
+        <form class="rowsv2 rform" method="post">
+            <div class="formaltı">
+                <div class="well well-default mt-48 well-responsive px-md-25">
+                    <h3 class="fw-500 my-40">Dükkanınızı Tamircisepeti'ne Kaydenin </h3>
+                    <h4 class="mb-20 fw-700">Dükkan Bilgileri</h4>
+                    <div class="rowsv2">
+                        <div class="col-md-88">
+                            <div class="form-group apply-pr">
+                                <input type="text" autocomplete="off" maxlength="35" class="form-input" name="Rname" />
+                                <label for="restaurantNameField" class="form-control-placeholder">Dükkan Adı</label>
+
+                            </div>
+                        </div>
+                        <div class="col-md-44">
+                            <div class="form-group apply-pr">
+                                <input type="text" autocomplete="off" maxlength="10" class="form-input" name="Rtel" />
+                                <label for="restaurantNameField" class="form-control-placeholder">Dükkan telefon</label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="mb-20 mt-40 fw-700">Dükkan Adres ve İletişim Bilgileri </h4>
+                    <div class="row-my-10">
+                        <div class="col-md-44">
+                            <div class="form-group apply-pr">
+                                <select id="iller"  name="acity"class="rselect">
+                                    <option value="0" class="sil">İl seçimi</option>
+                                </select>
+                               
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-44">
+                            <div class="form-group apply-pr">
+                                <select id="ilceler" name="atown" class="rselect rdisabled" disabled="disabled">
+                                    <option value="0" >ilçe seçimi</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-44">
+                            <div class="form-group apply-pr">
+
+                                <select id="semtler" name="adistrict" class="rselect rdisabled" disabled="disabled">
+                                    <option value="0" class="rsil">Semt Seçimi</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-my-10">
+                        <div class="col-md-88">
+                            <div class="form-group apply-pr">
+                                <input type="text" autocomplete="off" maxlength="50" class="form-input" name="aadres" />
+                                <label for="restaurantNameField" class="form-control-placeholder">Dükkan adresi</label>
+
+                            </div>
+                        </div>
+                        <div class="col-md-44">
+                            <div class="form-group apply-pr">
+                                <input type="text" autocomplete="off" maxlength="35" class="form-input" name="Remail" />
+                                <label for="restaurantNameField" class="form-control-placeholder">Email</label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="mb-20 mt-40 fw-700">Portal Giriş bilgileri </h4>
+                    <div class="row-my-10">
+                        <div class="col-md-88">
+                            <div class="form-group apply-pr">
+                                <input type="text" autocomplete="off" maxlength="35" class="form-input" name="Rkulad" />
+                                <label for="restaurantNameField" class="form-control-placeholder">Kullancı adı</label>
+
+                            </div>
+                        </div>
+                        <div class="col-md-44">
+                            <div class="form-group apply-pr">
+                                <input type="password" autocomplete="off" maxlength="15" class="form-input" name="Rsifre" />
+                                <label for="restaurantNameField" class="form-control-placeholder">sifre</label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-40">
+                        <div class="kayıtol">
+                            <div class="kayitol1">
+                                <a href="/canta/giris" class="kayitbtn">
+                                    <span class="d-inline-block">Giriş Yap</span>
+                                </a>
+                                <span class="kayitspn"></span>
+                                <button class="kayitbtn1"type="submit" >KAYIT OL</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <script>
+        $(function () {
+            //aynı ajaxmı kullanıcağımdan dolayı ajaxsetup oluştuyorum
+            $.ajaxSetup({
+                type: "post",
+                url: "/canta/ililce",//controlerımda gidicek olan yerim
+                dataType: "json"
+            });
+            $.extend({
+                ilGetir: function () {
+                    $.ajax({
+                        //datamızı gönderiyoruz
+                        data: { "tip": "ilGetir" },
+                        success: function (sonuc) {
+                            //gelen sonucumuz kontrol ediyoruz ona göre selectimze append işlemi gerçekleştiyoruz
+                            if (sonuc.ok) {
+
+                                $.each(sonuc.text, function (index, item) {
+                                    var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                    $("#iller").append(optionhtml);
+                                    
+
+                                });
+
+                            }
+                            else
+                            {
+                                $.each(sonuc.text, function (index, item) {
+                                    var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                    $("#iller").append(optionhtml);
+
+                                });
+
+                            }
+                        }
+                    });
+                },
+                semtgetir: function (ilID) {
+
+                    $.ajax({
+                        //ekstra olarak functionumaza gelen ilID mizi gönderiyoruz
+                        data: { "ilID": ilID, "tip": "ssemtgetir" },
+                        success: function (sonuc) {
+                            //bir önceki kayıtları temizliyorum
+                            $("#semtler option").remove();
+                            $("#semtler").removeClass("rdisabled");
+                            if (sonuc.ok) {
+                                //disabled true yapıyorum
+                                $("#semtler").prop("disabled", false);
+                                $.each(sonuc.text, function (index, item) {
+                                    var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                    $("#semtler").append(optionhtml);
+                                });
+
+                            } else {
+                                $.each(sonuc.text, function (index, item) {
+                                    var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                    $("#semtler").append(optionhtml);
+
+                                });
+                            }
+                        }
+                    });
+                },
+                ilceGetir: function (ilID) {
+
+                    $.ajax({
+                        //ekstra olarak functionumaza gelen ilID mizi gönderiyoruz
+                        data: { "ilID": ilID, "tip": "ilceGetir" },
+                        success: function (sonuc) {
+                            //bir önceki kayıtları temizliyorum
+                            $("#ilceler option").remove();
+                            $("#ilceler").removeClass("rdisabled");
+                            if (sonuc.ok) {
+                                //disabled true yapıyorum
+                                $("#ilceler").prop("disabled", false);
+                                $.each(sonuc.text, function (index, item) {
+                                    var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                    $("#ilceler").append(optionhtml);
+                                });
+
+                            } else {
+                                $.each(sonuc.text, function (index, item) {
+                                    var optionhtml = '<option value="' + item.Value + '">' + item.Text + '</option>';
+                                    $("#ilceler").append(optionhtml);
+
+                                });
+                            }
+                        }
+                    });
+                },
+
+            });
+            //ilgetirimizi çalıştıyoruz
+            $.ilGetir();
+
+            //il selectimizde değişiklik olduğunda çalışacak func
+            $("#iller").on("change", function () {
+                $(".sil").remove();
+                //seçili olan id alıyoruz
+                var ilID = $(this).val();
+                //seçili olan idmizi ilceGetir'imze gönderiyoruz
+                $.ilceGetir(ilID);
+            })
+                $("#ilceler").on("change", function () {
+                $(".rsil").remove();
+                //seçili olan id alıyoruz
+                var ilID = $(this).val();
+                //seçili olan idmizi ilceGetir'imze gönderiyoruz
+                $.semtgetir(ilID);
+            });
+         
+        });
+    </script>
+
+</body>
+
+</html>
